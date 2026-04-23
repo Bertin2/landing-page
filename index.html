@@ -1,36 +1,74 @@
 <!doctype html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/png" href="/logo.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Portfolio de Bertin Venancio Rivas - Desarrollador Frontend y Mobile (React, React Native, Expo)." />
+    <meta name="theme-color" content="#0b0c10" />
+    <link rel="icon" type="image/png" href="/logo.png" />
+    <link rel="apple-touch-icon" href="/logo.png" />
+    <link rel="canonical" href="https://landing-page.bvr-dev.com/" />
+
     <title>Bertin Venancio | Software Engineer</title>
-    
+    <meta name="description" content="Portfolio de Bertin Venancio Rivas — Ingeniero de Software especializado en desarrollo Frontend y Mobile con React, React Native y Expo." />
+    <meta name="keywords" content="Bertin Venancio, Bertin Venancio Rivas, BVR, Software Engineer, Frontend Developer, React Developer, React Native, Expo, Mobile Developer, Durango, México, Portfolio" />
+    <meta name="author" content="Bertin Venancio Rivas" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Preconnect Google Fonts for faster First Paint -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
     <!-- Open Graph / Facebook / WhatsApp / LinkedIn -->
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://bertinvenancio.com/" />
+    <meta property="og:url" content="https://landing-page.bvr-dev.com/" />
     <meta property="og:title" content="Bertin Venancio | Software Engineer" />
-    <meta property="og:description" content="Portfolio de Bertin Venancio Rivas - Desarrollador Frontend y Mobile de alto rendimiento." />
-    <meta property="og:image" content="https://raw.githubusercontent.com/bertinvenanciorivas/landing-page/main/public/logo.png" />
+    <meta property="og:description" content="Portfolio de Bertin Venancio Rivas — Desarrollador Frontend y Mobile de alto rendimiento (React, React Native, Expo)." />
+    <meta property="og:image" content="https://landing-page.bvr-dev.com/logo.png" />
+    <meta property="og:image:alt" content="Bertin Venancio Rivas — BVR logo" />
+    <meta property="og:locale" content="es_MX" />
+    <meta property="og:site_name" content="Bertin Venancio Rivas" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:url" content="https://bertinvenancio.com/" />
+    <meta name="twitter:url" content="https://landing-page.bvr-dev.com/" />
     <meta name="twitter:title" content="Bertin Venancio | Software Engineer" />
-    <meta name="twitter:description" content="Portfolio de Bertin Venancio Rivas - Desarrollador Frontend y Mobile." />
-    <meta name="twitter:image" content="https://raw.githubusercontent.com/bertinvenanciorivas/landing-page/main/public/logo.png" />
+    <meta name="twitter:description" content="Portfolio de Bertin Venancio Rivas — Desarrollador Frontend y Mobile." />
+    <meta name="twitter:image" content="https://landing-page.bvr-dev.com/logo.png" />
+
+    <!-- JSON-LD Person schema -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Bertin Venancio Rivas",
+        "url": "https://landing-page.bvr-dev.com/",
+        "image": "https://landing-page.bvr-dev.com/logo.png",
+        "jobTitle": "Software Engineer",
+        "description": "Frontend & Mobile App Developer (React, React Native, Expo).",
+        "sameAs": [
+          "https://www.linkedin.com/in/bvr-dev/",
+          "https://github.com/bvr-dev"
+        ],
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Victoria de Durango",
+          "addressCountry": "MX"
+        },
+        "knowsAbout": ["React", "React Native", "Expo", "JavaScript", "Node.js", "Artificial Intelligence"]
+      }
+    </script>
+
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-PM34SW3F9J"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-
       gtag('config', 'G-PM34SW3F9J');
     </script>
   </head>
   <body>
+    <a href="#home" class="skip-link">Saltar al contenido / Skip to content</a>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>

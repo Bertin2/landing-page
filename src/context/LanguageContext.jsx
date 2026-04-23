@@ -1,15 +1,20 @@
-import React, { createContext, useState, useContext } from 'react';
+import React, { createContext, useState, useContext, useEffect } from 'react';
 
 const LanguageContext = createContext();
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const useLanguage = () => useContext(LanguageContext);
+
+const STORAGE_KEY = 'bvr_lang';
 
 const translations = {
   es: {
     nav: {
       about: 'Sobre mí',
       experience: 'Experiencia',
-      contact: 'Contacto'
+      contact: 'Contacto',
+      toggleAria: 'Cambiar idioma a inglés',
+      menuAria: 'Menú principal'
     },
     hero: {
       subtitle: 'Hola, soy',
@@ -34,10 +39,17 @@ const translations = {
       p3: 'Aptitudes y tecnologías con las que he trabajado:',
       stat1: 'Años de Experiencia',
       stat2: 'Diplomados (IA y Soft Skills)',
-      stat3: 'Aptitudes y Skills'
+      stat3: 'Aptitudes y Skills',
+      skills: [
+        'JavaScript', 'Node.js', 'React.js', 'Python',
+        'Java', 'Spring Boot', 'MySQL', 'MongoDB',
+        'Docker', 'Inteligencia Artificial', 'Material-UI', 'Angular'
+      ]
     },
     experience: {
       title: '02. Mi Experiencia',
+      viewProjectAria: 'Ver proyecto',
+      viewCodeAria: 'Ver código fuente',
       jobs: [
         {
           id: 1,
@@ -65,14 +77,19 @@ const translations = {
       desc: 'Actualmente estoy abierto a nuevas oportunidades. Ya sea que tengas una pregunta, quieras colaborar en un proyecto, o saludarme, ¡haré todo lo posible por responderte!',
       btn: 'Saludar',
       footer1: 'Construido con React & Vanilla CSS.',
-      footer2: 'Diseñado y Desarrollado por Bertin Venancio Rivas'
+      footer2: 'Diseñado y Desarrollado por Bertin Venancio Rivas',
+      linkedinAria: 'Visitar perfil de LinkedIn',
+      githubAria: 'Visitar perfil de GitHub',
+      scrollTopAria: 'Volver al inicio'
     }
   },
   en: {
     nav: {
       about: 'About',
       experience: 'Experience',
-      contact: 'Contact'
+      contact: 'Contact',
+      toggleAria: 'Switch language to Spanish',
+      menuAria: 'Main menu'
     },
     hero: {
       subtitle: "Hello, I'm",
@@ -97,10 +114,17 @@ const translations = {
       p3: 'Skills and technologies I have worked with:',
       stat1: 'Years of Experience',
       stat2: 'Diplomas (AI & Soft Skills)',
-      stat3: 'Skills & Aptitudes'
+      stat3: 'Skills & Aptitudes',
+      skills: [
+        'JavaScript', 'Node.js', 'React.js', 'Python',
+        'Java', 'Spring Boot', 'MySQL', 'MongoDB',
+        'Docker', 'Artificial Intelligence', 'Material-UI', 'Angular'
+      ]
     },
     experience: {
       title: '02. My Experience',
+      viewProjectAria: 'View project',
+      viewCodeAria: 'View source code',
       jobs: [
         {
           id: 1,
@@ -128,14 +152,36 @@ const translations = {
       desc: "I'm currently open to new opportunities. Whether you have a question, want to collaborate on a project, or just want to say hi, I'll try my best to get back to you!",
       btn: 'Say Hello',
       footer1: 'Built with React & Vanilla CSS.',
-      footer2: 'Designed & Developed by Bertin Venancio Rivas'
+      footer2: 'Designed & Developed by Bertin Venancio Rivas',
+      linkedinAria: 'Visit LinkedIn profile',
+      githubAria: 'Visit GitHub profile',
+      scrollTopAria: 'Back to top'
     }
   }
 };
 
+const getInitialLang = () => {
+  if (typeof window === 'undefined') return 'es';
+  try {
+    const stored = window.localStorage.getItem(STORAGE_KEY);
+    if (stored === 'es' || stored === 'en') return stored;
+  } catch { /* ignore storage errors */ }
+  const browser = (navigator.language || 'es').toLowerCase();
+  return browser.startsWith('en') ? 'en' : 'es';
+};
+
 export const LanguageProvider = ({ children }) => {
-  const [lang, setLang] = useState('es'); // Default spanish
+  const [lang, setLang] = useState(getInitialLang);
   const t = translations[lang];
+
+  useEffect(() => {
+    try {
+      window.localStorage.setItem(STORAGE_KEY, lang);
+    } catch { /* ignore storage errors */ }
+    if (typeof document !== 'undefined') {
+      document.documentElement.lang = lang;
+    }
+  }, [lang]);
 
   const toggleLanguage = () => {
     setLang(prev => (prev === 'es' ? 'en' : 'es'));

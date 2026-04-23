@@ -122,6 +122,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
+}
+
+.avatar-logo {
+  width: 55%;
+  height: auto;
+  z-index: 1;
 }
 
 .floating-badge {

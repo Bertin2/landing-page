@@ -4,6 +4,7 @@ import Hero from './components/Hero';
 import About from './components/About';
 import Projects from './components/Projects';
 import Contact from './components/Contact';
+import ScrollToTop from './components/ScrollToTop';
 import { LanguageProvider } from './context/LanguageContext';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
@@ -15,6 +16,7 @@ function App() {
       duration: 800,
       once: true,
       offset: 100,
+      disable: () => window.matchMedia('(prefers-reduced-motion: reduce)').matches
     });
   }, []);
 
@@ -22,10 +24,13 @@ function App() {
     <LanguageProvider>
       <div className="App">
         <Header />
-        <Hero />
-        <About />
-        <Projects />
-        <Contact />
+        <main>
+          <Hero />
+          <About />
+          <Projects />
+          <Contact />
+        </main>
+        <ScrollToTop />
       </div>
     </LanguageProvider>
   );
